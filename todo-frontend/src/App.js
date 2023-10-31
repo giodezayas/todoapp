@@ -7,9 +7,9 @@ function App() {
     <div className="App">
       
        
-        <h1>
-         ToDo App
-        </h1>
+      <h1 style={{ textAlign: 'center' }}>
+        ToDo App
+      </h1>
         <Todo/>
        
     </div>
