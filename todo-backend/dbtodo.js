@@ -15,7 +15,7 @@ const mongoose = require('mongoose');
             required:true,
         },
         completed:{
-            type:String,
+            type:Boolean,
             required:true,
         },
     },
