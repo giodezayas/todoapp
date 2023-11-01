@@ -8,7 +8,8 @@ function Form(props) {
         inputValue2,
         setInputValue2,
         selectedValue,
-        setSelectedValue
+        setSelectedValue,
+        addTodo,
     } = props;
 
     
@@ -36,7 +37,7 @@ function Form(props) {
                 <option value="LEARNING">Learning</option>
             </Select>
             <br />
-            <Button type='submit'>Add</Button>
+            <Button type='submit' onClick={(e)=>addTodo(e)}>Add</Button>
         </FormContainer>
     );
 }

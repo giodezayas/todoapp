@@ -19,7 +19,30 @@ function Todo (){
 
     useEffect(()=>{
         fetchData();
-    });
+    },[]);
+
+    const  addTodo=async(e)=>{
+        try {
+           
+            e.preventDefault();
+            if (inputValue1.length===0 || inputValue2.length===0 || !(selectedValue==="WORK"||selectedValue==="HOME"||selectedValue==="LEARNING")) return null
+            await axios.post("/todos",[
+                {
+                    ...todos,
+                    title:inputValue1,
+                    description:inputValue2,
+                    category:selectedValue,
+                    completed:false,
+                }
+            ]);
+           fetchData();
+           setInputValue1("")
+           setInputValue2("")
+           setSelectedValue("Escoge la categoría")
+        } catch (error) {
+            console.log(error.message);
+        }
+    };
 
     console.log(todos)
     return (
@@ -32,6 +55,7 @@ function Todo (){
                 setInputValue2={setInputValue2}
                 selectedValue={selectedValue}
                 setSelectedValue={setSelectedValue}
+                addTodo={addTodo}
             />
         </Container>
     )
