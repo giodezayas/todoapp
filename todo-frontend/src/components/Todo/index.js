@@ -1,14 +1,27 @@
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import { Container } from './style'
 import Form from '../Form'
+import axios from '../../axios'
 
 function Todo (){
     const [inputValue1, setInputValue1] = useState('');
     const [inputValue2, setInputValue2] = useState('');
     const [selectedValue, setSelectedValue] = useState('');
-    console.log(inputValue1,"titulo")
-    console.log(inputValue2,"descripcion")
-    console.log(selectedValue,"categoria")
+    const [todos, setTodos] = useState([]); 
+    const  fetchData=async()=>{
+        try {
+            const response  =await axios.get("/todos");
+            setTodos(response.data);
+        } catch (error) {
+            console.log(error.message);
+        }
+    };
+
+    useEffect(()=>{
+        fetchData();
+    });
+
+    console.log(todos)
     return (
         <Container>
             <h2 style={{ textAlign: 'center' }}>Lista de Tareas</h2>
