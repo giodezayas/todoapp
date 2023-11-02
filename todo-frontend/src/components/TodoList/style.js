@@ -13,9 +13,19 @@ export const Row = styled.li`
     justify-content: space-between;
     padding: 8px 0;
     border-bottom: 1px solid #ccc; /* Agregar un borde inferior para separar las filas */
+    
 `;
 
 export const Text = styled.span`
+    ::first-letter {
+        text-transform: capitalize;
+    }
+
+    color: ${(props) => (props.isCompleted ? 'red' : 'black')};
+    text-decoration: ${(props) => (props.isCompleted ? 'line-through' : 'none')};
+`;
+
+export const DeleteIcon = styled.span`
     ::first-letter {
         text-transform: capitalize;
     }

@@ -58,7 +58,7 @@ function Todo (){
                 setSelectedValue={setSelectedValue}
                 addTodo={addTodo}
             />
-            <TodoList todos={todos}/>
+            <TodoList todos={todos} fetchData={fetchData}/>
         </Container>
     )
 }

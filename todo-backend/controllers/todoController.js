@@ -22,25 +22,35 @@ const createTodos=async (req,res)=>{
 
     }
 };
-const updateTodos=async (req,res)=>{
-    const {id}=req.params;
-    try{
-        if(!mongoose.Types.ObjectId.isValid(id)){
-            res.status(404).send(`There is no existing Todo with the id of :${id}`);
+const updateTodos = async (req, res) => {
+    const { id } = req.params;
+    try {
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            return res.status(404).send(`There is no existing Todo with the id of :${id}`);
         }
-        const todoID={_id:id};
-        const update={completed:true};
 
-        const updateTodo=await Todos.findOneAndUpdate(todoID,update);
-        if (!updateTodo){
-            res.status(404).send(`There is no existing Todo with the id of :${id}`);
+        const objTodo = await Todos.findById(id);
+
+        if (!objTodo) {
+            return res.status(404).send(`There is no existing Todo with the id of :${id}`);
         }
+
+        const updatedCompleted = !objTodo.completed; // Alternar el estado de completado
+
+        const update = { completed: updatedCompleted };
+
+        const updateTodo = await Todos.findOneAndUpdate({ _id: id }, update, { new: true });
+
+        if (!updateTodo) {
+            return res.status(404).send(`There was a problem updating the Todo with the id of: ${id}`);
+        }
+
         res.status(200).send(updateTodo);
-    }catch(err){
+    } catch (err) {
         res.status(500).send(err.message);
-
     }
 };
+
 
 const deleteTodos=async (req,res)=>{
     const { id }=req.params;
