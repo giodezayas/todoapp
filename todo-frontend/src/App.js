@@ -8,7 +8,7 @@ function App() {
       
        
       <h1 style={{ textAlign: 'center' }}>
-        ToDo App
+       Bienvenidos a  ToDo App
       </h1>
         <Todo/>
        

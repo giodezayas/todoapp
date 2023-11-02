@@ -30,3 +30,16 @@ export const DeleteIcon = styled.span`
         text-transform: capitalize;
     }
 `;
+
+export const Button = styled.button`
+    background-color: #ef7360  ;
+    margin-left :1em;
+    color:white;
+    border-radius:10px;
+    border:10px solid #ef7360;
+    padding:8 px 20px ;
+    border-radius:38px;
+    cursor :ponter;
+    font-size: 0.8rem;
+    font-weigth:600;
+`;
