@@ -1,6 +1,7 @@
 import React,{useEffect, useState} from 'react'
 import { Container } from './style'
 import Form from '../Form'
+import TodoList from '../TodoList'
 import axios from '../../axios'
 
 function Todo (){
@@ -57,6 +58,7 @@ function Todo (){
                 setSelectedValue={setSelectedValue}
                 addTodo={addTodo}
             />
+            <TodoList todos={todos}/>
         </Container>
     )
 }
